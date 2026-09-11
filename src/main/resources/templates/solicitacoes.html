@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações - Alimenta+</title>
+</head>
+<body>
+
+<h1>Solicitações de alimentos</h1>
+
+<div th:if="${#lists.isEmpty(solicitacoes)}">
+    <p>Nenhuma solicitação encontrada.</p>
+</div>
+
+<div th:each="solicitacao : ${solicitacoes}">
+
+    <h2 th:text="${solicitacao.oferta.alimento}">
+        Alimento
+    </h2>
+
+    <p>
+        Beneficiário:
+        <span th:text="${solicitacao.beneficiario.nome}">
+                Beneficiário
+            </span>
+    </p>
+
+    <p>
+        Cidade:
+        <span th:text="${solicitacao.oferta.cidade}">
+                Cidade
+            </span>
+    </p>
+
+    <p>
+        Quantidade:
+        <span th:text="${solicitacao.oferta.quantidade}">
+                0
+            </span>
+        <span th:text="${solicitacao.oferta.unidade}">
+                unidade
+            </span>
+    </p>
+
+    <p>
+        Status:
+        <span th:text="${solicitacao.status}">
+                SOLICITADA
+            </span>
+    </p>
+
+    <hr>
+
+</div>
+
+</body>
+</html>

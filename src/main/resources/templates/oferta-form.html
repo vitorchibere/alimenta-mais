@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova oferta - Alimenta+</title>
+</head>
+<body>
+
+<h1>Cadastrar oferta de alimento</h1>
+
+<form action="/ofertas" method="post">
+
+    <label for="alimento">Alimento:</label>
+    <input type="text" id="alimento" name="alimento" required>
+
+    <br><br>
+
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" id="quantidade" name="quantidade"
+           step="0.01" min="0.01" required>
+
+    <br><br>
+
+    <label for="unidade">Unidade:</label>
+    <select id="unidade" name="unidade" required>
+        <option value="">Selecione</option>
+        <option value="KG">Kg</option>
+        <option value="UNIDADES">Unidades</option>
+        <option value="CAIXAS">Caixas</option>
+        <option value="LITROS">Litros</option>
+    </select>
+
+    <br><br>
+
+    <label for="descricao">Descrição:</label>
+    <br>
+    <textarea id="descricao" name="descricao" rows="4" cols="40"></textarea>
+
+    <br><br>
+
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" name="cidade" required>
+
+    <br><br>
+
+    <button type="submit">Cadastrar oferta</button>
+
+</form>
+
+</body>
+</html>
