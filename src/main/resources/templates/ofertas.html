@@ -43,6 +43,22 @@
         <button type="submit">Tenho interesse</button>
     </form>
 
+    <form action="/ofertas/status" method="post">
+
+        <input type="hidden"
+               name="ofertaId"
+               th:value="${oferta.id}">
+
+        <select name="status">
+            <option value="RESERVADA">Reservada</option>
+            <option value="ENTREGUE">Entregue</option>
+            <option value="ENCERRADA">Encerrada</option>
+        </select>
+
+        <button type="submit">Atualizar status</button>
+
+    </form>
+
     <hr>
 
 </div>

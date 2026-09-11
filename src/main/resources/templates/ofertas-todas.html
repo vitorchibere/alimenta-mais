@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todas as ofertas - Alimenta+</title>
+</head>
+<body>
+
+<h1>Todas as ofertas</h1>
+
+<div th:if="${#lists.isEmpty(ofertas)}">
+    <p>Nenhuma oferta cadastrada.</p>
+</div>
+
+<div th:each="oferta : ${ofertas}">
+
+    <h2 th:text="${oferta.alimento}">
+        Alimento
+    </h2>
+
+    <p>
+        Quantidade:
+        <span th:text="${oferta.quantidade}">0</span>
+        <span th:text="${oferta.unidade}">unidade</span>
+    </p>
+
+    <p>
+        Cidade:
+        <span th:text="${oferta.cidade}">Cidade</span>
+    </p>
+
+    <p>
+        Descrição:
+        <span th:text="${oferta.descricao}">Descrição</span>
+    </p>
+
+    <p>
+        Doador:
+        <span th:text="${oferta.doador.nome}">Doador</span>
+    </p>
+
+    <p>
+        Status:
+        <strong th:text="${oferta.status}">DISPONIVEL</strong>
+    </p>
+
+    <hr>
+
+</div>
+
+</body>
+</html>

@@ -23,11 +23,33 @@ public class OfertaService {
         return ofertaRepository.findByStatus(StatusOferta.DISPONIVEL);
     }
 
-    public Oferta atualizarStatus(String id, StatusOferta status) {
+    public List<Oferta> listarTodas() {
+        return ofertaRepository.findAll();
+    }
+
+    public Oferta atualizarStatus(String id, StatusOferta novoStatus) {
+
         Oferta oferta = ofertaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Oferta não encontrada"));
 
-        oferta.setStatus(status);
+        StatusOferta statusAtual = oferta.getStatus();
+
+        if (statusAtual == StatusOferta.DISPONIVEL
+                && (novoStatus == StatusOferta.RESERVADA
+                || novoStatus == StatusOferta.ENCERRADA)) {
+
+            oferta.setStatus(novoStatus);
+
+        } else if (statusAtual == StatusOferta.RESERVADA
+                && novoStatus == StatusOferta.ENTREGUE) {
+
+            oferta.setStatus(novoStatus);
+
+        } else {
+            throw new IllegalArgumentException(
+                    "Transição de status não permitida"
+            );
+        }
 
         return ofertaRepository.save(oferta);
     }

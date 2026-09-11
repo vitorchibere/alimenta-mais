@@ -1,6 +1,7 @@
 package com.alimentamais.controller;
 
 import com.alimentamais.model.Oferta;
+import com.alimentamais.model.StatusSolicitacao;
 import com.alimentamais.model.Usuario;
 import com.alimentamais.service.OfertaService;
 import com.alimentamais.service.SolicitacaoService;
@@ -43,12 +44,25 @@ public class SolicitacaoController {
         return "redirect:/ofertas";
     }
 
+    @PostMapping("/solicitacoes/status")
+    public String atualizarStatus(
+            @RequestParam String solicitacaoId,
+            @RequestParam StatusSolicitacao status) {
+
+        System.out.println("SOLICITAÇÃO RECEBIDA: " + solicitacaoId);
+        System.out.println("STATUS RECEBIDO: " + status);
+
+        solicitacaoService.atualizarStatus(solicitacaoId, status);
+
+        return "redirect:/solicitacoes";
+    }
+
     @GetMapping("/solicitacoes")
     public String listarSolicitacoes(Model model) {
 
         model.addAttribute(
                 "solicitacoes",
-                solicitacaoService.listarSolicitadas()
+                solicitacaoService.listarTodas()
         );
 
         return "solicitacoes";

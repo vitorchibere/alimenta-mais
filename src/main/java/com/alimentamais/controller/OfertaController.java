@@ -1,6 +1,7 @@
 package com.alimentamais.controller;
 
 import com.alimentamais.model.Oferta;
+import com.alimentamais.model.StatusOferta;
 import com.alimentamais.model.Usuario;
 import com.alimentamais.service.OfertaService;
 import org.springframework.stereotype.Controller;
@@ -52,5 +53,26 @@ public class OfertaController {
         ofertaService.criar(oferta);
 
         return "redirect:/";
+    }
+
+    @PostMapping("/ofertas/status")
+    public String atualizarStatus(
+            @RequestParam String ofertaId,
+            @RequestParam StatusOferta status) {
+
+        ofertaService.atualizarStatus(ofertaId, status);
+
+        return "redirect:/ofertas";
+    }
+
+    @GetMapping("/ofertas/todas")
+    public String listarTodas(Model model) {
+
+        model.addAttribute(
+                "ofertas",
+                ofertaService.listarTodas()
+        );
+
+        return "ofertas-todas";
     }
 }

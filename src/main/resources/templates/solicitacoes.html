@@ -50,6 +50,38 @@
             </span>
     </p>
 
+    <div th:if="${solicitacao.status.name() == 'SOLICITADA'}">
+
+        <form action="/solicitacoes/status" method="post">
+
+            <input type="hidden"
+                   name="solicitacaoId"
+                   th:value="${solicitacao.id}">
+
+            <input type="hidden"
+                   name="status"
+                   value="ACEITA">
+
+            <button type="submit">Aceitar</button>
+
+        </form>
+
+        <form action="/solicitacoes/status" method="post">
+
+            <input type="hidden"
+                   name="solicitacaoId"
+                   th:value="${solicitacao.id}">
+
+            <input type="hidden"
+                   name="status"
+                   value="RECUSADA">
+
+            <button type="submit">Recusar</button>
+
+        </form>
+
+    </div>
+
     <hr>
 
 </div>
