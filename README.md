@@ -46,7 +46,7 @@ A escolha do ODS 2 está relacionada à proposta de facilitar o acesso a aliment
 - JaCoCo
 - Git e GitHub
 
-## Banco de dados
+## Banco de dados:
 
 O projeto utiliza o **MongoDB**, um banco de dados NoSQL.
 
@@ -58,9 +58,9 @@ As principais coleções utilizadas são:
 
 Durante o desenvolvimento local, foi utilizado o banco `test`.
 
-## Como executar
+## Como executar:
 
-### Pré-requisitos
+### Pré-requisitos:
 
 É necessário ter instalado:
 
